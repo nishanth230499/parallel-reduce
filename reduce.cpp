@@ -16,13 +16,12 @@ int main(int argc, char* argv[]) {
   if (argc >= 3) {
     num_rounds = atoi(argv[2]);
   }
-  Type* A = (Type*)malloc(n * sizeof(Type));
-  parallel_for(0, n, [&](size_t i) { A[i] = i; });
 
   double total_time = 0;
+  Type start = 0;
   for (int i = 0; i <= num_rounds; i++) {
     parlay::timer t;
-    long long ans = reduce(A, n);
+    long long ans = reduce(start, n);
     t.stop();
 
     if (i == 0) {
@@ -36,6 +35,5 @@ int main(int argc, char* argv[]) {
   }
   std::cout << "Average running time: " << total_time / num_rounds << std::endl;
 
-  free(A);
   return 0;
 }
