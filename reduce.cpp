@@ -19,6 +19,15 @@ int main(int argc, char* argv[]) {
   Type* A = (Type*)malloc(n * sizeof(Type));
   parallel_for(0, n, [&](size_t i) { A[i] = i; });
 
+  long long sequential_sum = 0;
+  parlay::timer sequential_time;
+  for(size_t i = 0; i < n; i++) {
+    sequential_sum += i;
+  }
+  sequential_time.stop();
+  std::cout << "Sequential Sum: " << sequential_sum << std::endl;
+  std::cout << "Sequential Run Time: " << sequential_time.total_time() << std::endl;
+
   double total_time = 0;
   for (int i = 0; i <= num_rounds; i++) {
     parlay::timer t;
