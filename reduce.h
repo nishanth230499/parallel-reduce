@@ -4,7 +4,7 @@ using namespace parlay;
 
 template <class T>
 T reduce(T start, long long n) {
-  if (n < 1200) {
+  if (n < 1300) {
     T seq_sum = 0;
     for(int i = 0; i < n; i++) {
       seq_sum += (start + i);
