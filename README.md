@@ -1,26 +1,37 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/piDFpjd9)
-# homework0-reduce  
+# parallel-reduce
 
-## Compiling the code  
-A Makefile is given in the directory, simply use ``make`` to compile the code. If you're compiling the code on a M-series Mac, add the ``MXMAC=1`` option:  
-```bash
-make MXMAC=1  
-```
-## Running the code  
-You can run the code with:  
-```bash
-./reduce [num_elements] [num_rounds]  
-```
-If not specified, the default values are ``num_elements=1000000000`` and ``num_rounds=3``.  
+The `reduce.h` demonstrates how to use the `parallel.h` library to find the sum of numbers in parallel. To test the performance, we have `reduce.cpp`.
 
-## Changing the number of threads  
-In your **command line**, set the environment variable ``PARLAY_NUM_THREADS`` using ``export``. For example, set the number of threads to 4:  
+## Compiling the code
+
+A Makefile is given in the directory, simply use `make` to compile the code. If you're compiling the code on a M-series Mac, add the `MXMAC=1` option:
+
 ```bash
-export PARLAY_NUM_THREADS=4  
+make MXMAC=1
 ```
 
-## Adding granularity control  
-Edit the the following function in the file``reduce.h``:  
+## Running the code
+
+You can run the code with:
+
+```bash
+./reduce [num_elements] [num_rounds]
+```
+
+If not specified, the default values are `num_elements=1000000000` and `num_rounds=3`.
+
+## Changing the number of threads
+
+In your **command line**, set the environment variable `PARLAY_NUM_THREADS` using `export`. For example, set the number of threads to 4:
+
+```bash
+export PARLAY_NUM_THREADS=4
+```
+
+<!-- ## Adding granularity control
+
+Edit the the following function in the file`reduce.h`:
+
 ```C++
 template <class T>
 T reduce(T *A, size_t n) {
@@ -37,5 +48,5 @@ T reduce(T *A, size_t n) {
   }
 }
 ```
-when $n$ is small enough, add the sum iteratively in sequential instead of dividing the tasks and computing the sum in parallel.  
 
+when $n$ is small enough, add the sum iteratively in sequential instead of dividing the tasks and computing the sum in parallel. -->
